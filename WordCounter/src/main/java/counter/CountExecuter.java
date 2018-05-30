@@ -41,9 +41,9 @@ public class CountExecuter {
 	}
 
 	/**
-	 * Retrieve the pull file details
+	 * Count the words of the requested file extension with request type {@link PullRequestType}
 	 * 
-	 * @return A list of {@link GHPullRequestFileDetail}
+	 * @return the number of words found.
 	 */
 	public long countPullRequests() {
 
