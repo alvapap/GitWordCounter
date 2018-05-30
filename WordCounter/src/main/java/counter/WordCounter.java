@@ -30,15 +30,20 @@ public class WordCounter implements CounterRequestType{
 			try (InputStream inputStream = requestType.getRepository().getBlob(entry.getValue()).read();
 					BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));) {
 
-				String line;
-				while ((line = br.readLine()) != null) {
-					if (!line.isEmpty()) {
-						countWords += line.split(" ").length;
-					}
-				}
+				countWords = coutner(countWords, br);
 
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+		}
+		return countWords;
+	}
+
+	protected long coutner(long countWords, BufferedReader br) throws IOException {
+		String line;
+		while ((line = br.readLine()) != null) {
+			if (!line.isEmpty()) {
+				countWords += line.split(" ").length;
 			}
 		}
 		return countWords;
