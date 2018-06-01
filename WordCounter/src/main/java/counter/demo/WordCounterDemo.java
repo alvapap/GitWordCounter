@@ -17,7 +17,8 @@ public class WordCounterDemo {
 		GitHub github;
 		GHRepository ghRepository = null;
 		try {
-			github = GitHub.connect("alvapap", "d26a17c867ac86e5f72f9c09a1c90e0b06a62230");
+			// add your login and an authtoken
+			github = GitHub.connect("login", "d26a17c867ac86e5f72f9c18a1c90e0b06a62540");
 			ghRepository = github.getRepository(repository);
 		} catch (IOException e) {
 			e.printStackTrace();
