@@ -5,6 +5,11 @@ import java.util.List;
 import org.kohsuke.github.GHPullRequestFileDetail;
 import org.kohsuke.github.GHRepository;
 
+/**
+ * Used for pull requests.
+ * @author Alex
+ *
+ */
 public class PullRequestType {
 
 	private List<GHPullRequestFileDetail> pullRequestDetails;

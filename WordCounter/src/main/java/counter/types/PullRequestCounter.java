@@ -1,4 +1,4 @@
-package counter;
+package counter.types;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import counter.requesttype.PullRequestType;
  * @author Alex
  *
  */
-public class WordCounter implements CounterRequestType{
+public class PullRequestCounter extends WordCounter{
 	
 	@Override
 	public long pullRequestCounter(PullRequestType requestType, String fileType) {
@@ -30,7 +30,7 @@ public class WordCounter implements CounterRequestType{
 			try (InputStream inputStream = requestType.getRepository().getBlob(entry.getValue()).read();
 					BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));) {
 
-				countWords = coutner(countWords, br);
+				countWords += this.coutner(br);
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -39,13 +39,5 @@ public class WordCounter implements CounterRequestType{
 		return countWords;
 	}
 
-	protected long coutner(long countWords, BufferedReader br) throws IOException {
-		String line;
-		while ((line = br.readLine()) != null) {
-			if (!line.isEmpty()) {
-				countWords += line.split(" ").length;
-			}
-		}
-		return countWords;
-	}
+	
 }
